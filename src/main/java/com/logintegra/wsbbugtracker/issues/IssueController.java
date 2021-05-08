@@ -27,7 +27,8 @@ public class IssueController {
     ModelAndView index(@ModelAttribute IssueFilter issueFilter) {
         ModelAndView modelAndView = new ModelAndView("issue/index");
 
-        modelAndView.addObject("issues", issueRepository.findAll());
+        modelAndView.addObject("issues", issueRepository.findAll(issueFilter.buildQuery()));
+
         modelAndView.addObject("projects", projectRepository.findAll());
         modelAndView.addObject("people", personRepository.findAll());
         modelAndView.addObject("states", State.values());
