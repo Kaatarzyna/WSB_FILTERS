@@ -20,6 +20,38 @@
 <section class="container">
     <h3 th:text="#{nav.issues}" class="pb-3"></h3>
 
+    <form th:action="@{/issue}" th:object="${filter}"
+          class="form-inline">
+
+        <select th:field="*{project}"
+                class="form-control">
+            <option th:value="${null}" th:text="#{project.placeholder}">
+            </option>
+            <option th:each="project : ${projects}"
+                    th:value="${project.id}"
+                    th:text="${project.name}"></option>
+        </select>
+
+        <select th:field="*{assignee}"
+                class="form-control">
+            <option th:value="${null}" th:text="#{assignee.placeholder}"></option>
+            <option th:each="person : ${people}"
+                    th:value="${person.id}"
+                    th:text="${person.name}"></option>
+        </select>
+
+        <select th:field="*{state}"
+                class="form-control">
+            <option th:value="${null}" th:text="#{state.placeholder}"></option>
+            <option th:each="state : ${states}"
+                    th:value="${state}"
+                    th:text="${#messages.msg('state.' + state)}"></option>
+        </select>
+
+        <button class="btn btn-primary" type="submit" th:text="#{common.search}"></button>
+    </form>
+
+
     <div th:each="issue : ${issues}">
         <span th:text="${issue.id}"></span> |
         <span th:text="${issue.project.name}"></span> |
