@@ -24,7 +24,8 @@
           class="form-inline">
 
         <select th:field="*{project}"
-                class="form-control">
+                class="form-control"
+                onchange="this.form.submit()">
             <option th:value="${null}" th:text="#{project.placeholder}">
             </option>
             <option th:each="project : ${projects}"
@@ -33,7 +34,8 @@
         </select>
 
         <select th:field="*{assignee}"
-                class="form-control">
+                class="form-control"
+                onchange="this.form.submit()">
             <option th:value="${null}" th:text="#{assignee.placeholder}"></option>
             <option th:each="person : ${people}"
                     th:value="${person.id}"
@@ -41,7 +43,8 @@
         </select>
 
         <select th:field="*{state}"
-                class="form-control">
+                class="form-control"
+                onchange="this.form.submit()">
             <option th:value="${null}" th:text="#{state.placeholder}"></option>
             <option th:each="state : ${states}"
                     th:value="${state}"
@@ -49,6 +52,7 @@
         </select>
 
         <button class="btn btn-primary" type="submit" th:text="#{common.search}"></button>
+        <a th:href="@{/issue}" th:text="#{common.clear}" class="btn btn-default"></a>
     </form>
 
 
