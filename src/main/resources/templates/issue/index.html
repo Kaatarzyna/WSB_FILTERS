@@ -51,6 +51,10 @@
                     th:text="${#messages.msg('state.' + state)}"></option>
         </select>
 
+        <input th:field="*{title}"
+               class="form-control"
+               th:placeholder="#{title.placeholder}"/>
+
         <button class="btn btn-primary" type="submit" th:text="#{common.search}"></button>
         <a th:href="@{/issue}" th:text="#{common.clear}" class="btn btn-default"></a>
     </form>
